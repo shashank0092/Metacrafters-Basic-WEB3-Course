@@ -1,0 +1,26 @@
+.main-box{
+    border: 2px solid black;
+    text-align: center;
+    background-color: rgb(227, 212, 212);
+}
+
+.heading{
+    font-weight: bold;
+    text-decoration: underline;
+
+}
+
+.btn{
+    height: 50px;
+    border-radius: 10px;
+    background-color: green;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+
+}
+
+.value-text{
+    font-size: 25px;
+    font-weight: bolder;
+}

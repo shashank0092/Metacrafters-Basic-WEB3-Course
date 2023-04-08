@@ -3,9 +3,10 @@ pragma solidity ^0.8.19;
 
 
 contract Error {
-    function Require(uint256 i) public pure returns(uint256) {
-        require(i>10,"I IS LESS THAN 10");
-        return i;
+    function Require(uint256 value,address payable reciver) public payable {
+        require(msg.sender.balance<value,"Inssuficent balance");
+        reciver.transfer(value);
+        
     }
 
     function Revert() public pure {

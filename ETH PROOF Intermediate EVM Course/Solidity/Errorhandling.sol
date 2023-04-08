@@ -3,19 +3,29 @@ pragma solidity ^0.8.19;
 
 
 contract Error {
-    function Require(uint256 value,address payable reciver) public payable {
-        require(msg.sender.balance<value,"Inssuficent balance");
-        reciver.transfer(value);
-        
+
+ 
+    function sendEther(address payable recipient) payable public{
+        require(msg.value/1 ether>=5,"Inssufficent Amount");
+        recipient.transfer(5 ether);
     }
 
-    function Revert() public pure {
-        revert();
+    function Revert(uint i) public payable  returns(uint) {
+
+        if(i>0){
+            i=10;
+            return i;
+        }
+
+        else{
+            i=100;
+            revert("THIS IS NOT CORREECT VALUE");
+        }
+
     }
 
-    function Assert(uint256 i) public pure returns(uint256){
-        assert(i==10);
-        return i;
-
+    function Assert(address payable recipient) public payable{
+        assert(msg.value/1 ether>=5);
+        recipient.transfer(5 ether);
     }
 }

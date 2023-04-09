@@ -6,7 +6,7 @@ import Web3 from "web3";
 const Home = () => {
   const [account, setAccount] = useState(null);
   const [amount, setAmount] = useState(null);
-  const web3 = new Web3("https://eth-goerli.g.alchemy.com/v2/p455lghLZelJEBcu4BH44h9ZGjFUH5go");
+  const web3 = new Web3("");
   const contract = new web3.eth.Contract(abi, smartContarctAdress);
 
 

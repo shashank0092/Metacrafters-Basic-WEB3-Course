@@ -1,23 +1,39 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-// Create the contract for your new token
 contract MyToken {
-    // Set the token name and symbol
-    string public name = "My Token";
-    string public symbol = "MYT";
+    string public name;
+    string public symbol;
+    uint8 public decimals;
+    uint256 public totalSupply;
+    address public owner;
+
+    mapping (address => uint256) public balanceOf;
+  
+
+    event Transfer(address indexed from, address indexed to, uint256 value);
     
-    // Set the number of decimals for the token
-    uint8 public decimals = 18;
-    
-    // Set the total supply of the token
-    uint256 public totalSupply = 1000000 * 10**uint256(decimals);
-    
-    // Create a mapping of account addresses to their token balances
-    mapping(address => uint256) public balanceOf;
-    
-    // Create the constructor function to mint the tokens to your wallet
-    constructor() {
+
+    constructor(string memory _name, string memory _symbol, uint8 _decimals, uint256 _totalSupply) {
+        name = _name;
+        symbol = _symbol;
+        decimals = _decimals;
+        totalSupply = _totalSupply;
+        owner = msg.sender;
         balanceOf[msg.sender] = totalSupply;
+    }
+
+  
+
+    
+ 
+
+    function mint(address _to, uint256 _amount) public {
+        require(msg.sender == owner, "Only owner can mint new tokens");
+
+        balanceOf[_to] += _amount;
+        totalSupply += _amount;
+
+        emit Transfer(address(0), _to, _amount);
     }
 }

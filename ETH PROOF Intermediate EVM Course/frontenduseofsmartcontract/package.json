@@ -1,20 +1,27 @@
 {
-  "name": "usesmartcontract",
+  "name": "frontenduseofsmartcontract",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "13.3.0",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.11.16",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
+    "next": "13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "web3": "^1.9.0"
   },
   "devDependencies": {
+    "@ethersproject/providers": "^5.7.2",
     "@nomicfoundation/hardhat-chai-matchers": "^1.0.6",
     "@nomicfoundation/hardhat-network-helpers": "^1.0.8",
     "@nomicfoundation/hardhat-toolbox": "^2.0.2",
@@ -31,6 +38,6 @@
     "solidity-coverage": "^0.8.2",
     "ts-node": "^10.9.1",
     "typechain": "^8.1.1",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.3"
   }
 }

@@ -45,7 +45,7 @@ const Home = () => {
         console.log(amountInEther)
         setWalletBalance(amountInEther);
         
-
+        
 
 
       }
@@ -55,7 +55,7 @@ const Home = () => {
     else {
       alert("Install Metamask");
     }
-  })
+  },[walletAdress,walletBalance])
 
   
 

@@ -18,6 +18,13 @@ const Forms = ({ address, amount,contract,web3Provider }) => {
         amount:""
     })
 
+
+
+    useEffect(()=>{
+        setFormWalletAdress(address)
+        setFromWalletAmount(amount)
+    },[formWalletAdress,fromWalletAmount])
+
     
 
     const sendAmount=async()=>{
@@ -32,10 +39,12 @@ const Forms = ({ address, amount,contract,web3Provider }) => {
                 autoClose: 5000,
                 hideProgressBar: false,
                 pauseOnHover: true,
-                draggable: true,
+                draggable: false,
                 progress: undefined,
                 theme: "light",
-                });
+            });
+
+            setReciverDetails({address:"",amount:""})
         }
         catch(err){
             toast(`${err}`, {
@@ -43,7 +52,7 @@ const Forms = ({ address, amount,contract,web3Provider }) => {
                 autoClose: 5000,
                 hideProgressBar: false,
                 pauseOnHover: true,
-                draggable: true,
+                draggable: false,
                 progress: undefined,
                 theme: "light",
                 });
@@ -63,7 +72,7 @@ const Forms = ({ address, amount,contract,web3Provider }) => {
             autoClose: 5000,
             hideProgressBar: false,
             pauseOnHover: true,
-            draggable: true,
+            draggable: false,
             progress: undefined,
             theme: "light",
             });
@@ -81,7 +90,7 @@ const Forms = ({ address, amount,contract,web3Provider }) => {
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
-            draggable: true,
+            draggable: false,
             progress: undefined,
             theme: "light",
             });

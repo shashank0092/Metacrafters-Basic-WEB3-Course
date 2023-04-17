@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { address } from "./constant/constants"
 import "./globals.css"
 import Forms from "./components/Form"
+import Typography from '@mui/material/Typography';
 import Navbar from "./components/Navbar"
 import {ethers} from "ethers"
 import abi from "./constant/Transaction.json"
@@ -85,7 +86,9 @@ const Home = () => {
             {
               walletAdress==null || walletBalance==null?(
                 <div>
-                  <p>Use Metamask</p>
+                   <Typography variant='h3' sx={{ textAlign: "center" }}>
+                        Please Install Metamask
+                    </Typography>
                 </div>
               ):(
                 <Forms address={walletAdress} amount={walletBalance} contract={contract} web3Provider={web3Provider} />

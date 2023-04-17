@@ -1,14 +1,13 @@
 "use client"
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import FormControl from '@mui/material/FormControl';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import Web3 from 'web3';
-
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Forms = ({ address, amount,contract,web3Provider }) => {
 
@@ -19,21 +18,35 @@ const Forms = ({ address, amount,contract,web3Provider }) => {
         amount:""
     })
 
-
+    
 
     const sendAmount=async()=>{
 
-        console.log(contract.functions)
         try{
           
             const tx=await contract.functions.transfer(recvierDetails.address,{from:formWalletAdress,
             value:ethers.utils.parseEther(recvierDetails.amount),})
-
-            console.log(tx);
+            
+            toast(`${tx.hash}`, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
         }
         catch(err){
-            console.log
-            (err)
+            toast(`${err}`, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
         }
 
         
@@ -45,7 +58,15 @@ const Forms = ({ address, amount,contract,web3Provider }) => {
         const index=await contract.getTransactionCount();
 
         const data=await contract.getTransaction(index-1);
-        window.alert(`Transaction details of ${index-1} is ${data[0]}` )
+        toast(`Transaction details of ${index-1} is ${data[0]}`, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
 
      
     }
@@ -54,12 +75,22 @@ const Forms = ({ address, amount,contract,web3Provider }) => {
 
     const transactionCount=async()=>{
         const data=await contract.getTransactionCount();
-        window.alert(`There is total ${data} transaction complted`);
+        toast(`There is total ${data} transaction complted`, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
         
     }
 
     return (
         <>
+        <ToastContainer/>
             <Box sx={{ display: 'flex', flexDirection: 'column' }} >
                 <Box>
                     <Typography variant='h3' sx={{ textAlign: "center" }}>
@@ -100,7 +131,7 @@ const Forms = ({ address, amount,contract,web3Provider }) => {
                             onChange={(e)=>{
                                 setReciverDetails({...recvierDetails,address:e.target.value})
                             }}
-                            defaultValue="Enter Recvier Adress Here"
+                            placeholder="ENTER RECVIER ADDRESS HERE"
                         />
                     </Box>
 
@@ -109,11 +140,12 @@ const Forms = ({ address, amount,contract,web3Provider }) => {
 
                             id="outlined-helperText"
                             label="Sending Amount"
-                            defaultValue="0"
+                            
                             onChange={(e)=>{
                                 setReciverDetails({...recvierDetails,amount:e.target.value})
                             }}
                             sx={{ width: '100%' }}
+                            placeholder="0"
                         />
                     </Box>
                 </Box>

@@ -1,0 +1,9 @@
+1)Missing Constructor Visibility: Add the constructor keyword and set the visibility to public.
+
+2)Uninitialized Struct Pointer: Initialize the Storage struct when declaring it.
+
+3)Insecure Access Control: Add appropriate access control mechanisms, such as the onlyOwner modifier to restrict access to the store() function only to the contract owner.
+
+4)Unused Function: Remove the getOwner() function from the contract.
+
+5)Outdated Solidity Version: Update the Solidity version to the latest stable version, which is currently 0.8.4.

@@ -1,0 +1,9 @@
+1)Missing Constructor Visibility: The contract constructor is missing visibility. This can lead to confusion and may expose the contract to vulnerabilities, particularly if the constructor includes complex functionality that requires permission checks.
+
+2)Uninitialized Struct Pointer: The store() function creates a new Storage struct without initializing it. This means that the user field will point to the storage address 0, which is the same as owner. This could result in unintended consequences, such as unauthorized access to data.
+
+3)Insecure Access Control: There is no access control mechanism implemented in the contract, meaning that anyone can call the store() function and modify the stored data for any address. This can result in unauthorized data tampering or even complete loss of funds.
+
+4)Unused Function: The getOwner() function is unused and could be removed from the contract to reduce its attack surface.
+
+5)Outdated Solidity Version: The contract is written in an outdated Solidity version, which means it may not take advantage of new language features, optimizations, and security improvements.
